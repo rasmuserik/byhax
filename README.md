@@ -2,18 +2,32 @@
 
 An app for communities, festivals, etc. roadmap:
 
+- [ ] set up app infrastructure
+    - [ ] repository
+    - [ ] simple deployment
+    - [ ] ci
+    - [ ] coverage
+    - [ ] waffle-board
+    - [ ] api.byhax.com for data (simple pouchdb-server)
+    - [ ] contributing etc.
+    - [ ] i18n (da/en)
+    - [ ] package.json repository links etc
+    - [ ] deploy to byhax.com
 - [ ] mobile friendly easy/offline event calendar with data for tinkuy.dk/events
 - [ ] production deployment
 - [ ] port/add to other community
 - [ ] identify futher needs of actual users (both members, and back-office functionality), and expand roadmap
 
-# Tech design choices
+# Design choices
 
+- use single design across platform, follow material-design guidelines
+- model data entities after schema.org and dublin-core, where it makes sense
 - build as simple web-app, but use `react-native-web`, such that it is easy to port to actual app later.
 - `pouchdb` for sync/offline state, mirror relevant parts into `immutable` `redux` state
     - database per community, and per user
-- use single design across platform, follow material-design guidelines
-- model data entities after schema.org and dublin-core, where it makes sense
+- unit testing and coverage
+- reduce number of dependencies
+- code formatting: prettier
 
 ## Design of redux state
 

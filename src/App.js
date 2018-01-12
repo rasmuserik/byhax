@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {__} from './i18n';
 
 const styles = StyleSheet.create({
   app: {},
@@ -22,7 +23,9 @@ function App(props) {
           resizeMode="contain"
           style={styles.logo}
         />
-        <Text style={styles.title}>ByHax(under development)</Text>
+        <Text style={styles.title}>
+          {__('ByHax (under development)')}
+        </Text>
       </View>
     </View>
   );
