@@ -16,6 +16,7 @@ Roadmap:
     - [ ] contributing etc.
     - [ ] package.json repository links etc
     - [ ] deploy to byhax.dk
+    - [ ] check out if we can use react-native-material-ui 
 - [ ] mobile friendly easy/offline event calendar with data for tinkuy.dk/events
 - [ ] production deployment
 - [ ] port/add to other community
