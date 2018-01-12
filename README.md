@@ -1,6 +1,8 @@
 # byhax
 
-An app for communities, festivals, etc. roadmap:
+An app for communities, festivals, etc. Starting out with a calendar for tinkuy.dk
+
+Roadmap:
 
 - [ ] set up app infrastructure
     - [x] repository
