@@ -3,16 +3,17 @@
 An app for communities, festivals, etc. roadmap:
 
 - [ ] set up app infrastructure
-    - [ ] repository
-    - [ ] simple deployment
+    - [x] repository
+    - [x] simple deployment
+    - [x] i18n (da/en)
+    - [x] deploy to byhax.com
     - [ ] ci
     - [ ] coverage
     - [ ] waffle-board
-    - [ ] api.byhax.com for data (simple pouchdb-server)
+    - [ ] api.byhax.com for data (simple pouchdb-server, with tinkuy-data)
     - [ ] contributing etc.
-    - [ ] i18n (da/en)
     - [ ] package.json repository links etc
-    - [ ] deploy to byhax.com
+    - [ ] deploy to byhax.dk
 - [ ] mobile friendly easy/offline event calendar with data for tinkuy.dk/events
 - [ ] production deployment
 - [ ] port/add to other community
