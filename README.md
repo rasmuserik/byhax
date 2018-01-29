@@ -12,11 +12,10 @@ Roadmap:
     - [ ] ci
     - [ ] coverage
     - [ ] waffle-board
-    - [ ] api.byhax.com for data (simple pouchdb-server, with tinkuy-data)
+    - [x] api.byhax.com for data (simple pouchdb-server, with tinkuy-data)
     - [ ] contributing etc.
     - [ ] package.json repository links etc
-    - [ ] deploy to byhax.dk
-    - [ ] check out if we can use react-native-material-ui 
+    - [x] deploy to byhax.dk
 - [ ] mobile friendly easy/offline event calendar with data for tinkuy.dk/events
 - [ ] production deployment
 - [ ] port/add to other community
@@ -26,7 +25,7 @@ Roadmap:
 
 - use single design across platform, follow material-design guidelines
 - model data entities after schema.org and dublin-core, where it makes sense
-- build as simple web-app, but use `react-native-web`, such that it is easy to port to actual app later.
+- build as simple web-app
 - `pouchdb` for sync/offline state, mirror relevant parts into `immutable` `redux` state
     - database per community, and per user
 - unit testing and coverage
