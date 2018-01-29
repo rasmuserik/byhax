@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import {tinkuy} from './pouch';
 import registerServiceWorker from './registerServiceWorker';
+import 'typeface-roboto'
 
 render(
   <Provider store={store}>

@@ -9,6 +9,7 @@ Roadmap:
     - [x] simple deployment
     - [x] i18n (da/en)
     - [x] deploy to byhax.com
+    - [x] material-ui@next
     - [ ] ci
     - [ ] coverage
     - [ ] waffle-board
