@@ -4,23 +4,31 @@ An app for communities, festivals, etc. Starting out with a calendar for tinkuy.
 
 Roadmap:
 
-- [ ] set up app infrastructure
-    - [x] repository
-    - [x] simple deployment
-    - [x] i18n (da/en)
-    - [x] deploy to byhax.com
-    - [x] material-ui@next
-    - [ ] ci
-    - [ ] coverage
-    - [ ] waffle-board
-    - [x] api.byhax.com for data (simple pouchdb-server, with tinkuy-data)
-    - [ ] contributing etc.
-    - [ ] package.json repository links etc
-    - [x] deploy to byhax.dk
-- [ ] mobile friendly easy/offline event calendar with data for tinkuy.dk/events
-- [ ] production deployment
-- [ ] port/add to other community
-- [ ] identify futher needs of actual users (both members, and back-office functionality), and expand roadmap
+- Version 0.0.1:
+    - [ ] set up app infrastructure
+        - [x] repository
+        - [x] simple deployment
+        - [x] i18n (da/en)
+        - [x] deploy to byhax.com
+        - [x] material-ui@next
+        - [ ] ci
+        - [ ] coverage
+        - [ ] waffle-board
+        - [x] api.byhax.com for data (simple pouchdb-server, with tinkuy-data)
+        - [ ] contributing etc.
+        - [ ] package.json repository links etc
+        - [x] deploy to byhax.dk
+    - [ ] fix db loading, to wait on-changes until after first sync.
+    - [ ] mobile friendly easy/offline event calendar(list) with data for tinkuy.dk/events
+- Version 0.0.2:
+    - [ ] login with tinkuy-login
+    - [ ] show profile
+- Version 0.0.3:
+    - [ ] event calendar - desktop/week
+- Version 0.0.4:
+    - [ ] book room
+- Version 0.0.5:
+    - [ ] port/add to other community
 
 # Design choices
 
