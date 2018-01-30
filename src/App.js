@@ -55,14 +55,6 @@ function App(props) {
   return (
     <div>
       <Bar />
-      <img
-        src={logo}
-        style={{
-          width: 64,
-          height: 64
-        }}
-      />
-      <div>{__('ByHax (under development)')}</div>
       <Calendar />
     </div>
   );
