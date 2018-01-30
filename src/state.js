@@ -1,6 +1,6 @@
-import {tinkuy} from './pouch';
 import {createStore} from 'redux';
 import Immutable from 'immutable';
+import PouchDB from 'pouchdb';
 
 const reducers = {};
 reducers.eventObjects = (state, action) => {
@@ -26,16 +26,22 @@ export const store = createStore(
     events: {}
   }),
   window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-tinkuy
-  .changes({since: 'now', live: true, include_docs: true})
-  .on('change', ({doc}) =>
-    store.dispatch({type: 'eventObjects', objs: [doc]})
-  );
 
+const tinkuy = new PouchDB('tinkuy');
 (async () => {
+  try {
+    await PouchDB.replicate('https://api.byhax.com/tinkuy', 'tinkuy');
+  } catch(e) {
+    console.error(e);
+  }
+  tinkuy
+    .changes({since: 'now', live: true, include_docs: true})
+    .on('change', ({doc}) =>
+      store.dispatch({type: 'eventObjects', objs: [doc]})
+    );
   const docs = await tinkuy.allDocs({include_docs: true});
   store.dispatch({type: 'eventObjects', objs: docs.rows});
 })();
