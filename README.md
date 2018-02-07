@@ -41,11 +41,25 @@ Roadmap:
 - reduce number of dependencies
 - code formatting: prettier
 
+## Long-term vision
+
+Vision:
+
+- foundation for an social open networks (decentralised)
+- success by what it enables, not by how long time people spend on it
+- people/communities are the customer, not the product
+
+Technologies:
+
+- IPFS for storage / sync
+- status.net/mastodon compatibility for social networking
+- matrix.org for realtime chat
+
 ## Design of redux state
 
 Synced to two pouchdbs: `community`(sync'ed with server) and `user`
 
-- `events` (sync'ed to community-pouch, modelled after schema.org/Event) 
+- `events` (sync'ed from community-pouch, modelled after schema.org/Event, only sync viewdate -1-2month+2-3month) 
     - startDate:
     - endDate:
     - name:
@@ -55,6 +69,6 @@ Synced to two pouchdbs: `community`(sync'ed with server) and `user`
     - itemtype: one of BusinessEvent ChildrensEvent ComedyEvent CourseInstance DanceEvent DeliveryEvent EducationEvent ExhibitionEvent Festival FoodEvent LiteraryEvent MusicEvent PublicationEvent SaleEvent ScreeningEvent SocialEvent SportsEvent TheaterEvent VisualArtsEvent Event
     - keywords (not on events, but typical naming in schema/dc).
 - `ui` ephemeral state, not synced
-- `user` (synced to user-pouch)
+- `user` (fully synced to user-pouch)
     - `me` modelled after schema.org/Person
     - `byhaxAppSettings`
