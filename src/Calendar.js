@@ -3,7 +3,7 @@ import Immutable from 'immutable';
 import {connect} from 'react-redux';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
-import { withStyles } from 'material-ui/styles';
+import {withStyles} from 'material-ui/styles';
 import _ from 'lodash';
 import {__} from './i18n';
 
@@ -11,23 +11,23 @@ const styles = theme => ({
   calDate: {
     marginLeft: 16
   },
-    sunday: {
-      color: 'red'
-        },
-    center: {
-      textAlign: 'center'
-        },
-    paper: {
-          padding: 16,
-          marginTop: 16,
-          color: theme.palette.text.secondary,
-        },
+  sunday: {
+    color: 'red'
+  },
+  center: {
+    textAlign: 'center'
+  },
+  paper: {
+    padding: 16,
+    marginTop: 16,
+    color: theme.palette.text.secondary
+  },
   truncate: {
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis'
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   }
-})
+});
 function eventPath(date) {
   const ymd = date
     .toISOString()
@@ -36,10 +36,13 @@ function eventPath(date) {
   return ['events'].concat(ymd);
 }
 
-function CalendarEvent({classes, event: {startDate, endDate, name, description, _id}}) {
+function CalendarEvent({
+  classes,
+  event: {startDate, endDate, name, description, _id}
+}) {
   return (
     <Paper key={_id} className={classes.paper}>
-        {startDate.slice(11,16) + ' '} 
+      {startDate.slice(11, 16) + ' '}
       <strong>{name}</strong>
       <div className={classes.truncate}>{description}</div>
     </Paper>
@@ -47,7 +50,7 @@ function CalendarEvent({classes, event: {startDate, endDate, name, description, 
 }
 
 function Calendar({events, classes}) {
-  events= events.toJS();
+  events = events.toJS();
   if (!events.length) {
     return <div />;
   }
@@ -80,7 +83,6 @@ function Calendar({events, classes}) {
     const month = months[date.getMonth()];
     const weekDay = days[date.getDay()];
 
-
     dateString = date.toISOString();
     const nextDateString = nextDate.toISOString();
     const dayEvents = _.sortBy(
@@ -89,20 +91,32 @@ function Calendar({events, classes}) {
       ),
       ['startDate']
     );
-    result.push(<Grid item key={dateString} xs={2} className={classes.calDate}>
-      <h2> <big>{date.getDate()}</big> <br/>
-        <small className={date.getDay() ? '' : classes.sunday}>{__(weekDay)}</small>
-      </h2>
-    </Grid>);
-    result.push(<Grid item key={dateString+'events'} xs={8}>
-      {dayEvents.map(event => CalendarEvent({event,classes}))}
-    </Grid>);
+    result.push(
+      <Grid item key={dateString} xs={2} className={classes.calDate}>
+        <h2>
+          {' '}
+          <big>{date.getDate()}</big> <br />
+          <small className={date.getDay() ? '' : classes.sunday}>
+            {__(weekDay)}
+          </small>
+        </h2>
+      </Grid>
+    );
+    result.push(
+      <Grid item key={dateString + 'events'} xs={8}>
+        {dayEvents.map(event => CalendarEvent({event, classes}))}
+      </Grid>
+    );
     result = result.concat();
 
     date = nextDate;
   } while (dateString <= lastDate);
 
-  return <Grid container spacing={24}>{result}</Grid>;
+  return (
+    <Grid container spacing={24}>
+      {result}
+    </Grid>
+  );
 }
 
 function mapStateToProps(state) {
@@ -123,4 +137,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(state) {
   return {};
 }
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Calendar));
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(Calendar)
+);
