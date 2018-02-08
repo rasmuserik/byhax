@@ -1,6 +1,13 @@
 const translations = {
   da: {
-    'ByHax (under development)': 'ByHax (under udvikling)'
+    Login: 'Log ind',
+    Sun: 'Søn',
+    Mon: 'Man',
+    Tue: 'Tir',
+    Wed: 'Ons',
+    Thu: 'Tor',
+    Fri: 'Fre',
+    Sat: 'Lør'
   },
   en: {}
 };

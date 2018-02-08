@@ -26,15 +26,14 @@ export const store = createStore(
     events: {}
   }),
   window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-
 
 const tinkuy = new PouchDB('tinkuy');
 (async () => {
   try {
     await PouchDB.replicate('https://api.byhax.com/tinkuy', 'tinkuy');
-  } catch(e) {
+  } catch (e) {
     console.error(e);
   }
   tinkuy
