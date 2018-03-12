@@ -57,6 +57,7 @@ function Calendar({events, classes}) {
   const dates = Object.values(events).map(o => o.startDate);
   const firstDate = _.min(dates);
   const lastDate = _.max(dates);
+  /*
   const months = [
     'January',
     'February',
@@ -71,23 +72,26 @@ function Calendar({events, classes}) {
     'November',
     'December'
   ];
+  */
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   let date = new Date(firstDate.slice(0, 10));
-  let prevMonth = '';
+  //let prevMonth = '';
   let result = [];
   let dateString;
+  const calendarEvent = (event) => CalendarEvent({event, classes});
+  let nextDateString;
+  const eventsFilter = o => o.startDate >= dateString && o.startDate <= nextDateString
   do {
     const nextDate = new Date(24 * 60 * 60 * 1000 + +date);
 
-    const month = months[date.getMonth()];
+    //const month = months[date.getMonth()];
     const weekDay = days[date.getDay()];
 
     dateString = date.toISOString();
-    const nextDateString = nextDate.toISOString();
+    nextDateString = nextDate.toISOString();
     const dayEvents = _.sortBy(
-      events.filter(
-        o => o.startDate >= dateString && o.startDate <= nextDateString
+      events.filter(eventsFilter
       ),
       ['startDate']
     );
@@ -104,8 +108,9 @@ function Calendar({events, classes}) {
     );
     result.push(
       <Grid item key={dateString + 'events'} xs={8}>
-        {dayEvents.map(event => CalendarEvent({event, classes}))}
+        {dayEvents.map(calendarEvent)}
       </Grid>
+
     );
     result = result.concat();
 

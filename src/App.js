@@ -1,19 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import {__} from './i18n';
-import Calendar from './Calendar';
 import Reboot from 'material-ui/Reboot';
 import {withStyles} from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Button from 'material-ui/Button';
+import Toolbar from 'material-ui/Toolbar';
+import TextField from 'material-ui/TextField';
+import Typography from 'material-ui/Typography';
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
+
+/*
 import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import List from 'material-ui/List';
 import MenuIcon from 'material-ui-icons/Menu';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
+
+import Calendar from './Calendar';
+import logo from './logo.svg';
+*/
+
+import InfiniScroll from './InfiniScroll';
+import {__} from './i18n';
 
 const communityName = 'Tinkuy';
 
@@ -22,7 +29,7 @@ const styles = {
     paddingTop: 64
   },
   flex: {
-    flex: 1
+    flex: 1,
   },
   menuButton: {
     marginLeft: -12,
@@ -45,6 +52,15 @@ function ButtonAppBar(props) {
             color="inherit"
             className={classes.flex}>
             {communityName}
+          </Typography>
+          <Typography
+            type="title"
+            color="inherit"
+            className={classes.flex}>
+          <TextField
+            value="Feb 2018"
+            fullWidth={false}
+          />
           </Typography>
           <Button color="inherit">{__('Login')}</Button>
         </Toolbar>
@@ -84,7 +100,8 @@ function App(props) {
         }}>
         <Reboot />
         <Bar />
-        <Calendar />
+        <InfiniScroll />
+        {/*<Calendar />*/}
       </div>
     </MuiThemeProvider>
   );
