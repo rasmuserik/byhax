@@ -8,19 +8,42 @@ import _ from 'lodash';
 import {__} from './i18n';
 
 const styles = theme => ({
+  center: {
+    textAlign: 'center'
+  },
+  calMonth: {
+    fontSize: 12,
+    fontWeight: 'normal'
+  },
+  calDay: {
+    fontSize: 36
+  },
+  calDayOfWeek: {
+    fontSize: 24
+  },
   calDate: {
+    float: 'left',
+    marginLeft: 16
+  },
+  pastEvent: {
+    color: '#aaa'
+  },
+  futureEvent: {
+    color: '#333'
+  },
+  dayHeader: {
+    display: 'inline-block',
+    float: 'left',
     marginLeft: 16
   },
   sunday: {
     color: 'red'
   },
-  center: {
-    textAlign: 'center'
-  },
-  paper: {
+  event: {
     padding: 16,
     marginTop: 16,
-    color: theme.palette.text.secondary
+    marginLeft: '25%',
+    width: '70%'
   },
   truncate: {
     whiteSpace: 'nowrap',
@@ -40,8 +63,15 @@ function CalendarEvent({
   classes,
   event: {startDate, endDate, name, description, _id}
 }) {
+  const today = new Date().toISOString();
   return (
-    <Paper key={_id} className={classes.paper}>
+    <Paper
+      key={_id}
+      className={
+        classes.event +
+        ' ' +
+        (startDate < today ? classes.pastEvent : classes.futureEvent)
+      }>
       {startDate.slice(11, 16) + ' '}
       <strong>{name}</strong>
       <div className={classes.truncate}>{description}</div>
@@ -49,31 +79,64 @@ function CalendarEvent({
   );
 }
 
-function Calendar({events, classes}) {
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+function dayHeader({classes, date}) {
+  const month = months[date.getMonth()];
+  const isodate = date.toISOString().slice(0, 10);
+  const weekDay = days[date.getDay()];
+  return (
+    <h2 className={classes.dayHeader}>
+      {' '}
+      <div className={classes.calMonth}>{__(month)}</div>
+      <div className={classes.calDay}>{date.getDate()}</div>
+      <div
+        className={
+          classes.calDayOfWeek +
+          ' ' +
+          (date.getDay() ? '' : classes.sunday)
+        }>
+        {__(weekDay)}
+      </div>
+    </h2>
+  );
+}
+
+function CalendarEvents({events, classes}) {
   events = events.toJS();
+  const result = [];
+  let prevDay;
+  for (const event of events) {
+    const day = event.startDate.slice(0, 10);
+    if (prevDay !== day) {
+      prevDay = day;
+      result.push(<br />);
+      result.push(<br />);
+      result.push(dayHeader({classes, date: new Date(day)}));
+    }
+    result.push(CalendarEvent({classes, event}));
+  }
+  /*
   if (!events.length) {
     return <div />;
   }
   const dates = Object.values(events).map(o => o.startDate);
   const firstDate = _.min(dates);
   const lastDate = _.max(dates);
-  /*
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
-  */
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
 
   let date = new Date(firstDate.slice(0, 10));
   //let prevMonth = '';
@@ -85,8 +148,6 @@ function Calendar({events, classes}) {
   do {
     const nextDate = new Date(24 * 60 * 60 * 1000 + +date);
 
-    //const month = months[date.getMonth()];
-    const weekDay = days[date.getDay()];
 
     dateString = date.toISOString();
     nextDateString = nextDate.toISOString();
@@ -96,15 +157,7 @@ function Calendar({events, classes}) {
       ['startDate']
     );
     result.push(
-      <Grid item key={dateString} xs={2} className={classes.calDate}>
-        <h2>
-          {' '}
-          <big>{date.getDate()}</big> <br />
-          <small className={date.getDay() ? '' : classes.sunday}>
-            {__(weekDay)}
-          </small>
-        </h2>
-      </Grid>
+      dayHeader({classes, date})
     );
     result.push(
       <Grid item key={dateString + 'events'} xs={8}>
@@ -116,11 +169,17 @@ function Calendar({events, classes}) {
 
     date = nextDate;
   } while (dateString <= lastDate);
+  */
 
+  return result;
+}
+function Calendar({events, classes}) {
   return (
-    <Grid container spacing={24}>
-      {result}
-    </Grid>
+    <div>
+      Februar
+      <h1 className={classes.center}>Marts</h1>
+      {CalendarEvents({events, classes})}
+    </div>
   );
 }
 
@@ -136,7 +195,7 @@ function mapStateToProps(state) {
       )
     );
   }
-
+  console.log(events.toJS());
   return {events};
 }
 function mapDispatchToProps(state) {

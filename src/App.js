@@ -14,12 +14,12 @@ import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import List from 'material-ui/List';
 import MenuIcon from 'material-ui-icons/Menu';
+import InfiniScroll from './InfiniScroll';
 
-import Calendar from './Calendar';
 import logo from './logo.svg';
 */
 
-import InfiniScroll from './InfiniScroll';
+import Calendar from './Calendar';
 import {__} from './i18n';
 
 const communityName = 'Tinkuy';
@@ -29,7 +29,7 @@ const styles = {
     paddingTop: 64
   },
   flex: {
-    flex: 1,
+    flex: 1
   },
   menuButton: {
     marginLeft: -12,
@@ -57,10 +57,7 @@ function ButtonAppBar(props) {
             type="title"
             color="inherit"
             className={classes.flex}>
-          <TextField
-            value="Feb 2018"
-            fullWidth={false}
-          />
+            <TextField value="Feb 2018" fullWidth={false} />
           </Typography>
           <Button color="inherit">{__('Login')}</Button>
         </Toolbar>
@@ -95,13 +92,13 @@ function App(props) {
     <MuiThemeProvider theme={theme}>
       <div
         style={{
-          background: theme.palette.primary.light,
+          background: '#eee',
           fontFamily: 'roboto, arial, sans-serif'
         }}>
         <Reboot />
         <Bar />
-        <InfiniScroll />
-        {/*<Calendar />*/}
+        {/*<InfiniScroll />*/}
+        <Calendar />
       </div>
     </MuiThemeProvider>
   );

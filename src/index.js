@@ -14,5 +14,5 @@ render(
 );
 registerServiceWorker();
 if (module.hot) {
-    module.hot.accept();
+  module.hot.accept();
 }
