@@ -1,4 +1,24 @@
-# byhax
+# ByHax
+
+
+- simplify
+    - plain html instead of material-ui
+    - next-js static app
+
+Current sprint (0.0.1):
+
+- [ ] formulate design approach
+- [ ] calendar views
+    - [ ] month
+    - [ ] week-event-list
+    - [ ] agenda today+next couple of weeks
+- [ ] next.js
+- [ ] single event view
+
+## Sprints
+
+
+# old
 
 An app for communities, festivals, etc. Starting out with a calendar for tinkuy.dk
 
