@@ -4,16 +4,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.16.3",
+    "helmet": "^3.12.0",
     "immutable": "^3.8.2",
+    "level": "^3.0.0",
+    "level-browserify": "^1.1.2",
     "lodash": "^4.17.5",
-    "material-ui": "^1.0.0-beta.30",
-    "material-ui-icons": "^1.0.0-beta.17",
-    "pouchdb": "^6.4.1",
+    "next": "^5.0.0",
+    "node-fetch": "^2.1.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "redux": "^3.7.2",
-    "typeface-roboto": "0.0.54"
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "gh-pages": "^1.1.0",
@@ -21,11 +21,9 @@
     "prettier": "^1.10.2"
   },
   "scripts": {
-    "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
-    "predeploy": "npm run build",
-    "prettier": "prettier --write --print-width 72 --single-quote --no-bracket-spacing --jsx-bracket-same-line src/*.js",
-    "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "prettier": "prettier --write --print-width 72 --single-quote --no-bracket-spacing --jsx-bracket-same-line *.js */*.js",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
   }
 }
