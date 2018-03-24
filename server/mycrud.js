@@ -242,10 +242,10 @@ async function getSince({res, db, owner, query}) {
 router.get('/:owner/:db', async (req, res) => {
   const query = req.query;
   const {owner, db} = req.params;
-  if (query.gt && query.lt) {
+  if (query.gt && query.lt && query.format === 'json') {
     return getRange({query, owner, db, res});
   }
-  if (query.since) {
+  if (query.since && query.format === 'json') {
     return getSince({query, owner, db, res});
   }
   res.status(400).send('needs lt and gt query parameters');
