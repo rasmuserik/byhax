@@ -66,7 +66,7 @@ async function tinkuySync(mycrud) {
           'tinkuy',
           'events',
           event._id,
-          JSON.stringify(event)
+          Buffer.from(JSON.stringify(event), 'utf-8').toString('latin1')
         );
         break;
       }

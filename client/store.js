@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect, Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
+import {isServer} from './util'
 
 const initialState = {
   lastUpdate: 0,
@@ -21,20 +22,15 @@ export const reducer = (state = initialState, action) => {
   }
 }
 
-
 // MIDDLEWARE
 const middleware = ({ getState, dispatch }) => next => action => {
   return next(action);
 }
 
-
 const composeWithDevTools = self.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const initStore = (initialState = initialState) => {
   return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(middleware)))
 }
-
-
-const isServer = typeof document === 'undefined';
 
 // TODO: simplify withRedux: ÷initStore ÷initialState
 const getOrCreateStore = (initStore, initialState) => isServer 
@@ -54,7 +50,6 @@ export const withRedux = (...args) => (Component) => {
   }
 
   ComponentWithRedux.getInitialProps = async (props = {}) => {
-    const isServer = checkServer()
     const store = getOrCreateStore(initStore)
     const initialProps = Component.getInitialProps
       ? await Component.getInitialProps({ ...props, isServer, store })
