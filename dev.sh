@@ -4,7 +4,7 @@ do
   kill `cat .pid`
   sleep 0.1
   clear
-  node server.js $@ &
+  node index.js $@ &
   echo $! > .pid
   sleep 3
 done

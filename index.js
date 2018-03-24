@@ -1,8 +1,9 @@
 const express = require('express');
 const helmet = require('helmet');
 const next = require('next');
-const mycrud = require('./lib/mycrud');
-const {tinkuy} = require('./lib/tinkuy');
+require('./server/browser-shim');
+const mycrud = require('./server/mycrud');
+const {tinkuy} = require('./server/tinkuy');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
